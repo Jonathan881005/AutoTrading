@@ -26,20 +26,15 @@ if __name__ == '__main__':
     # The following part is an example.
     # You can modify it at will.
 
-
     df_training = pd.read_csv(args.training, header = None)
     c0 = df_training.columns[0]
 
     df_testing = pd.read_csv(args.testing, header = None)
     period = df_testing.shape[0] # number of columns
-    # print(period)
 
     arima = auto_arima(df_training[c0], start_p=1, start_q=1,max_p=3, max_q=3, m=12,start_P=0, seasonal=True, d=1, D=1, trace=True, error_action='ignore',suppress_warnings=True)
     result = arima.predict(n_periods = period) # Predict the stock price of the following xx days 
     result = result.astype('float32')
-
-    # print(result) 
-
 
     prev = 0
     stock = [] # rise or fall
@@ -87,8 +82,6 @@ if __name__ == '__main__':
             else:               # fall
                 now = 0
                 res.append(-1)      # sell 
-        
-    print(res)
 
     df_res = pd.DataFrame(res)
     df_res.drop(index=0,inplace=True)

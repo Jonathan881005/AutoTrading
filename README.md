@@ -6,7 +6,7 @@
 ## Model Training
 * load data
 ```python
-df_training = pd.read_csv(args.training)
+df_training = pd.read_csv(args.training, header = None)
 ```
 * Use ARIMA to train model
 ```python
@@ -14,12 +14,13 @@ arima = auto_arima(df_training[c0], start_p=1, start_q=1,max_p=3, max_q=3, m=12,
 ```
 * Predict
 ```python
-result = arima.predict(n_periods = 20)
+result = arima.predict(n_periods = period)
 ```
 * Write csv
 ```python
-df_res = pd.DataFrame(res)
-df_res.to_csv(args.output, index = 0)
+    df_res = pd.DataFrame(res)
+    df_res.drop(index=0,inplace=True)
+    df_res.to_csv(args.output, index = 0)
 ```
 
 
