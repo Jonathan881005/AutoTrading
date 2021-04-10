@@ -2,7 +2,7 @@
 ## Usage
 `python trader.py --training training.csv --testing testing.csv --output output.csv`
 ## Data analysis
-
+![](https://imgur.com/a/AMDgm3b)
 ## Model Training
 * load data
 ```python
