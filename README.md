@@ -2,7 +2,7 @@
 ## Usage
 `python trader.py --training training.csv --testing testing.csv --output output.csv`
 ## Data analysis
-![](https://imgur.com/a/AMDgm3b)
+![](https://scontent.fkhh1-1.fna.fbcdn.net/v/t1.15752-9/169263519_287989606252131_639722569939506058_n.png?_nc_cat=106&ccb=1-3&_nc_sid=ae9488&_nc_ohc=tuPQsT5FQ-0AX_DcyRc&_nc_oc=AQmmdxn6ZSmx9JK2sy7m5aM85-qctG8PgOXmXmDKcJWbx4O_O5tssyZZgxh7E4x3Lw2XBy2NSVSIXWheZ3e_WGmF&_nc_ht=scontent.fkhh1-1.fna&oh=4357fddbe1c9d9bcb86e4f39ef06f8fb&oe=60978395)
 ## Model Training
 * load data
 ```python
