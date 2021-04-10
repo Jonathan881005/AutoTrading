@@ -32,7 +32,6 @@ if __name__ == '__main__':
 
     df_testing = pd.read_csv(args.testing, header = None)
     period = df_testing.shape[0] # number of columns
-    period = period
     # print(period)
 
     arima = auto_arima(df_training[c0], start_p=1, start_q=1,max_p=3, max_q=3, m=12,start_P=0, seasonal=True, d=1, D=1, trace=True, error_action='ignore',suppress_warnings=True)
@@ -64,7 +63,7 @@ if __name__ == '__main__':
     res = []
     isfirst = True
     for tomo in stock:
-        if(now == -1):       # short 
+        if(now == -1):      # short 
             if(tomo):   # rise
                 now = 0
                 res.append(1)
@@ -73,21 +72,21 @@ if __name__ == '__main__':
                 res.append(0)
 
 
-        if(now == 0):       # no stock
-            if(tomo):   # rise
+        elif(now == 0):     # no stock
+            if(tomo):       # rise
                 now = 1
                 res.append(1)       # buy
             else:               # fall
                 now = -1
-                res.append(-1)       # nope
+                res.append(-1)      # nope
 
         else:               # have stock
-            if(tomo):   # rise   
+            if(tomo):           # rise
                 now = 1
-                res.append(0)    # hold
+                res.append(0)       # hold
             else:               # fall
                 now = 0
-                res.append(-1)     # sell 
+                res.append(-1)      # sell 
         
     print(res)
 
