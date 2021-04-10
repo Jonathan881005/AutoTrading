@@ -27,10 +27,10 @@ if __name__ == '__main__':
     # You can modify it at will.
 
 
-    df_training = pd.read_csv(args.training, head = None)
+    df_training = pd.read_csv(args.training, header = None)
     c0 = df_training.columns[0]
 
-    df_testing = pd.read_csv(args.testing, head = None)
+    df_testing = pd.read_csv(args.testing, header = None)
     period = df_testing.shape[0] # number of columns
     period = period
     # print(period)
