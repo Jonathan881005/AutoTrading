@@ -55,20 +55,15 @@ if __name__ == '__main__':
             stock.append(0)          
         else:
             stock.append(1) 
+
         prev = next
+
+    print(stock)
 
     now = 0 # have stock or not
     res = []
     isfirst = True
-    i = 0
     for tomo in stock:
-        i = i + 1
-        if(i == period): 
-            break
-
-        if(isfirst):
-            isfirst = False
-            continue
 
         if(now == 0):       # no stock
             if(tomo):   # rise
@@ -86,6 +81,8 @@ if __name__ == '__main__':
                 now = 0
                 res.append(-1)     # sell 
         
+    print(res)
 
     df_res = pd.DataFrame(res)
+    df_res.drop(index=0,inplace=True)
     df_res.to_csv(args.output, index = 0)
