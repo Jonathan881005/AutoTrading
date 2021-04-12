@@ -33,7 +33,7 @@ if __name__ == '__main__':
     period = df_testing.shape[0] # number of columns
 
     arima = auto_arima(df_training[c0], start_p = 1, start_q = 1, max_p = 3, max_q = 3, m = 12, start_P = 0, seasonal = True, d = 1, D = 1, trace = True, error_action = 'ignore', suppress_warnings = True)
-    result = arima.predict(n_periods = period) # Predict the stock price of the following xx days 
+    result = arima.predict(n_periods = period + 1) # Predict the stock price of the following xx+1 days 
     result = result.astype('float32')
 
     prev = 0
@@ -46,16 +46,16 @@ if __name__ == '__main__':
             continue
 
         if(prev > nxt):
-            stock.append(0)          
+            stock.append(0)
         else:
-            stock.append(1) 
-
+            stock.append(1)
+        
         prev = nxt
 
+    stock = stock[1:]
 
     now = 0 # have stock or not
     res = []
-    isfirst = True
     for tomo in stock:
         if(now == -1):      # short 
             if(tomo):   # rise
@@ -64,7 +64,6 @@ if __name__ == '__main__':
             else:       # fall
                 now = -1
                 res.append(0)
-
 
         elif(now == 0):     # no stock
             if(tomo):       # rise
