@@ -52,7 +52,6 @@ if __name__ == '__main__':
 
         prev = nxt
 
-    print(stock)
 
     now = 0 # have stock or not
     res = []
@@ -83,6 +82,6 @@ if __name__ == '__main__':
                 now = 0
                 res.append(-1)      # sell 
 
+
     df_res = pd.DataFrame(res)
-    df_res.drop(index=0,inplace=True)
-    df_res.to_csv(args.output, index = 0)
+    df_res.to_csv(args.output, index = 0, header = False)
