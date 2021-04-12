@@ -32,7 +32,7 @@ if __name__ == '__main__':
     df_testing = pd.read_csv(args.testing, header = None)
     period = df_testing.shape[0] # number of columns
 
-    arima = auto_arima(df_training[c0], start_p=1, start_q=1,max_p=3, max_q=3, m=12,start_P=0, seasonal=True, d=1, D=1, trace=True, error_action='ignore',suppress_warnings=True)
+    arima = auto_arima(df_training[c0], start_p = 1, start_q = 1, max_p = 3, max_q = 3, m = 12, start_P = 0, seasonal = True, d = 1, D = 1, trace = True, error_action = 'ignore', suppress_warnings = True)
     result = arima.predict(n_periods = period) # Predict the stock price of the following xx days 
     result = result.astype('float32')
 
